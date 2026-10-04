@@ -299,3 +299,14 @@ div.progress-bar {
     margin-top: 15px;
     font-weight: bold;
 }
+
+button {
+    margin-top: 20px;
+    background-color: #5A3825;
+    color: #F4EBDD;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
