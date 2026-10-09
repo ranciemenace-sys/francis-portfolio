@@ -63,7 +63,8 @@ JavaScript is used to filter projects by category:
 
 ### 🐙 GitHub API Integration
 
-The Projects page connects to the GitHub REST API to retrieve and display public repositories from my GitHub profile.
+JavaScript uses the Fetch API to retrieve public repository data from GitHub and dynamically creates repository cards using DOM methods and `textContent`. The page includes loading feedback, JSON response handling, and error handling if the request fails.
+
 
 The GitHub section dynamically displays information such as:
 
@@ -89,6 +90,36 @@ The website is designed to work across different screen sizes, including:
 * Mobile devices
 
 ---
+
+## 🔐 Security Review
+
+The following security practices were applied during development:
+
+* No API keys or private secrets are exposed in the client-side code.
+* Dynamic GitHub repository text is inserted using JavaScript `textContent` rather than `innerHTML`.
+* External repository links opened in a new tab use `rel="noopener noreferrer"`.
+* The contact form validates required fields and checks email format using JavaScript.
+* HTTPS is used for the deployed website URLs.
+
+**Contact form limitation:** The form currently performs client-side validation. A success message does not mean an email has actually been sent; a backend or email service is needed for message delivery.
+
+## ⚡ Performance Optimization
+
+Performance improvements and checks include:
+
+* Compressing and appropriately sizing project images.
+* Using `loading="lazy"` for suitable below-the-fold images.
+* Keeping the main visible profile image from being unnecessarily lazy-loaded.
+* Measuring website performance with Lighthouse.
+
+### Lighthouse Results
+
+* **Performance score:** 99/100
+* **Test device:** Mobile
+* **Before optimization:** Baseline score not recorded.
+
+The recorded score represents the test performed after the changes. Since a baseline was not recorded beforehand, a before-and-after score comparison cannot be reported accurately.
+
 
 ## 🧰 Technologies Used
 
