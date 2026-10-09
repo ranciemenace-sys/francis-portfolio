@@ -8,142 +8,221 @@ let gitHubLoading = document.querySelector("#github-loading")
 
 let githubApi = "https://api.github.com/users/ranciemenace-sys/repos"
 
-fetch(githubApi)
-    .then(response => {
-        if (!response.ok){
-            throw new Error("Failed to fetch GitHub repositories")
-        }
-        
-        return response.json();
-    })
-    .then(data => {
-        
-        if (data.length === 0) {
-            gitHubRepositories.innerHTML = "<p>No repositories found.</p>"
-}
-        data.forEach(repo => {
-            let card = document.createElement("div")
-            card.classList.add("project-card")
 
-            card.innerHTML = `
-                <h3>${repo.name}</h3>
-                <p>${repo.description || "No description available."}</p>
-                <p>Language: ${repo.language || "Not specifeid"}</p>
-                <p>⭐ Stars: ${repo.stargazers_count}</p>
-                <p>🍴 Forks: ${repo.forks_count}</p>
-                <a href="${repo.html_url}" target="_blank">View on GitHub</a>
-                
-            `
-            if (repo.language === "HTML" || repo.language === "CSS" || repo.language === "JavaScript") {
-                card.classList.add("web-development")
+if (gitHubRepositories) {
+
+    fetch(githubApi)
+        .then(response => {
+
+            if (!response.ok) {
+                throw new Error("Failed to fetch GitHub repositories")
             }
 
-            if (repo.name.toLowerCase().includes("cyber")) {
-                card.classList.add("cyber-security")
+            return response.json()
+        })
+
+        .then(data => {
+
+            if (data.length === 0) {
+
+                let message = document.createElement("p")
+                message.textContent = "No repositories found."
+                gitHubRepositories.appendChild(message)
+
             }
 
-            gitHubRepositories.appendChild(card)
-            
-    })
-    
+            data.forEach(repo => {
+
+                let card = document.createElement("div")
+                card.classList.add("project-card")
+
+
+                let title = document.createElement("h3")
+                title.textContent = repo.name
+
+
+                let description = document.createElement("p")
+                description.textContent =
+                    repo.description || "No description available."
+
+
+                let language = document.createElement("p")
+                language.textContent =
+                    "Language: " + (repo.language || "Not specified")
+
+
+                let stars = document.createElement("p")
+                stars.textContent =
+                    "⭐ Stars: " + repo.stargazers_count
+
+
+                let forks = document.createElement("p")
+                forks.textContent =
+                    "🍴 Forks: " + repo.forks_count
+
+
+                let githubLink = document.createElement("a")
+                githubLink.textContent = "View on GitHub"
+                githubLink.href = repo.html_url
+                githubLink.target = "_blank"
+                githubLink.rel = "noopener noreferrer"
+
+
+                card.appendChild(title)
+                card.appendChild(description)
+                card.appendChild(language)
+                card.appendChild(stars)
+                card.appendChild(forks)
+                card.appendChild(githubLink)
+
+
+                if (
+                    repo.language === "HTML" ||
+                    repo.language === "CSS" ||
+                    repo.language === "JavaScript"
+                ) {
+                    card.classList.add("web-development")
+                }
+
+
+                if (repo.name.toLowerCase().includes("cyber")) {
+                    card.classList.add("cyber-security")
+                }
+
+
+                gitHubRepositories.appendChild(card)
+
+            })
+
+
             if (gitHubLoading) {
                 gitHubLoading.style.display = "none"
             }
 
-})
-
-.catch(error => {
-    console.error(error)
-
-    if (gitHubLoading) {
-        gitHubLoading.textContent = "Unable to load GitHub repositories."
-    }
-});
-
-if(allButton) {
-    allButton.addEventListener("click", function(){
-        document.querySelectorAll(".project-card").forEach(function(card) {
-            card.style.display = "block"
         })
+
+        .catch(error => {
+
+            console.error(error)
+
+            if (gitHubLoading) {
+                gitHubLoading.textContent =
+                    "Unable to load GitHub repositories."
+            }
+
+        })
+}
+
+
+if (allButton) {
+
+    allButton.addEventListener("click", function () {
+
+        document.querySelectorAll(".project-card").forEach(function (card) {
+
+            card.style.display = "block"
+
+        })
+
     })
 
 }
 
+
 let webButton = document.querySelector(".web-development")
 
 if (webButton) {
-    webButton.addEventListener("click", function(){
-        document.querySelectorAll(".project-card").forEach(function(card){
-            if(card.classList.contains("web-development")){
+
+    webButton.addEventListener("click", function () {
+
+        document.querySelectorAll(".project-card").forEach(function (card) {
+
+            if (card.classList.contains("web-development")) {
                 card.style.display = "block"
-            } else{
+            } else {
                 card.style.display = "none"
             }
+
         })
-    });
+
+    })
+
 }
 
-    let cyberButton = document.querySelector(".cyber-security")
+
+let cyberButton = document.querySelector(".cyber-security")
 
 if (cyberButton) {
-    cyberButton.addEventListener("click", function(){
-        document.querySelectorAll(".project-card").forEach(function(card){
-            if(card.classList.contains("cyber-security")){
+
+    cyberButton.addEventListener("click", function () {
+
+        document.querySelectorAll(".project-card").forEach(function (card) {
+
+            if (card.classList.contains("cyber-security")) {
                 card.style.display = "block"
-            } else{
+            } else {
                 card.style.display = "none"
             }
+
         })
-    });
+
+    })
+
 }
 
 let contactForm = document.querySelector("#contactForm")
 
 if (contactForm) {
-    contactForm.addEventListener("submit", function(event) {
+
+    contactForm.addEventListener("submit", function (event) {
 
         event.preventDefault()
 
+
         let name = document.querySelector("#name").value
-
+        
         let email = document.querySelector("#email").value
-
+        
         let message = document.querySelector("#message").value
+
+        let formMessage = document.querySelector("#formMessage")
 
         let valid = true
 
         let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+
         if (name.trim() === "") {
 
-        document.querySelector("#formMessage").textContent = "Please enter your name."
-        valid = false
+            formMessage.textContent = "Please enter your name."
+            valid = false
 
-    };
-});
+        } else if (email.trim() === "") {
 
-if (email.trim() === "") {
+            formMessage.textContent = "Please enter your email."
+            valid = false
 
-    document.querySelector("#formMessage").textContent = "Please enter your email."
-    
-    valid = false
+        } else if (!emailPattern.test(email)) {
 
-if (!emailPattern.test(email)) {
-        document.querySelector("#formMessage").textContent = "Please enter a valid email address."
-        valid = false
-}
+            formMessage.textContent =
+                "Please enter a valid email address."
 
-}
+            valid = false
 
-if (message.trim() === "") {
+        } else if (message.trim() === "") {
 
-    document.querySelector("#formMessage").textContent = "Please enter a message."
-    valid = false
-    }
+            formMessage.textContent =
+                "Please enter a message."
+
+            valid = false
+
+        }
         if (valid) {
 
-        document.querySelector("#formMessage").textContent = "Message sent successfully!"
+            formMessage.textContent =
+                "Message sent successfully!"
 
+        }
 
-    }
+    })
 }
