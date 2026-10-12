@@ -1,5 +1,15 @@
+:root {
+    --bg-main: #0B1120;
+    --bg-panel: #1E293B;
+    --accent-cyan: #22D3EE;
+    --accent-violet: #A78BFA;
+    --text-main: #F1F5F9;
+    --text-muted: #CBD5E1;
+    --border-color: #334155;
+}
+
 header h2 {
-    color: wheat;
+    color: var(--text-main);
     font-weight: bold;
 }
 
@@ -10,15 +20,15 @@ header h2 {
 }
 
 body {
-    background-color: #F4EBDD;
+    background-color: var(--bg-main);
     font-family:Arial, sans-serif;
-    color: #291c15;
+    color: var(--text-main);
     line-height: 1.6;
 
 }
 
 header {
-    background-color: #241812;
+    background-color: var(--bg-panel);
     padding: 20px;
 }
 
@@ -30,13 +40,13 @@ nav {
 }
 
 nav a {
-    color: #F4EBDD;
+    color: var(--accent-cyan);
     text-decoration: none;
     font-weight: bold;
 }
 
 nav a:hover {
-    color: #C9A15A;
+    color: var(--accent-violet);
 }
 
 main {
@@ -62,11 +72,12 @@ section {
 
 #hero h1{
     font-size: 2.5rem;
-    color: #5A3825;
+    color: var(--text-main);
 }
 
 #hero p{
     font-size: 1.1rem;
+    color: var(--text-main);
 }
 
 #about {
@@ -79,8 +90,8 @@ section {
 
 #skills li{
     display: inline-block;
-    background-color: #5A3825;
-    color: #F4EBDD;
+    background-color: var(--bg-panel);
+    color: var(--text-main);
     padding: 8px 15px;
     margin: 5px;
     border-radius: 20px;
@@ -91,17 +102,17 @@ section {
 }
 
 #contact a {
-    color: #5A3825;
+    color: var(--white);
     font-weight: bold;
 }
 
 #contact a:hover {
-    color: #C9A15A;
+    color: var(--champagne-gold);
 }
 
 footer {
-    background-color: #241812;
-    color: #F4EBDD;
+    background-color: var(--bg-panel);
+    color: var(--text-main);
     text-align: center;
     padding: 20px;
 }
@@ -123,7 +134,7 @@ footer {
 }
 
 #projects h3 {
-    color: #5A3825;
+    color: var(--white);
     margin: 25px 0;
 }
 
@@ -157,21 +168,23 @@ footer {
 
 div.progress-bar {
     width: 100%;
-    background-color: #8A6348;
+    background-color: var(--bg-panel);
     border-radius: 20px;
     height: 25px;
+    border: 2px solid var(--border-color);
+    overflow: hidden;
 }
 
-.progress{
+.progress {
     height: 100%;
     border-radius: 20px;
-    background-color: #C9A15A;
+    background-color: var(--accent-cyan);
 }
 
 .html-progress {
     width: 70%;
 }
-    
+
 .css-progress {
     width: 60%;
 }
@@ -189,10 +202,20 @@ div.progress-bar {
 }
 
 .project-card {
-    background-color: #ffffff;
+    background-color: var(--bg-panel);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 10px 10px 10px rgba(36, 24, 18, 0.30);
+}
+
+.project-card {
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-cyan);
 }
 
 .project-card img{
@@ -203,21 +226,21 @@ div.progress-bar {
 }
 
 .project-card h3{
-    color:#5A3825;
+    color: var(--text-main);
     margin-bottom: 10px;
 }
 
 .project-card p{
     margin-bottom: 20px;
     margin-top: 10px;
-    color: #241812;
+    color: var(--text-main);
 }
 
 .project-card li {
     display: inline-block;
-    background-color: #C9A15A;
+    background-color: var(--chocolate);
     font-weight: bold;
-    color: #5A3825;
+    color: var(--white);
     padding: 5px 10px;
     border-radius: 5px;
     margin-left : 5px;
@@ -232,19 +255,20 @@ div.progress-bar {
 .project-status {
     margin-top: 15px;
     font-weight: bold;
-    background-color: #5A3825;
-    color: #C9A15A;
+    background-color: var(--chocolate);
+    color: var(--champagne-gold);
     padding: 5px 10px;
     border-radius: 20px;
     display: inline-block;
 }
 
 #contactForm {
-    background-color: #ffffff;
+    background-color: var(--bg-panel);
     padding: 30px;
     margin-top: 25px;
+    border: 1px solid var(--border-color);
     border-radius: 10px;
-    box-shadow: 10px 10px 10px rgba(36, 24, 18, 0.30);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     text-align: left;
 }
 
@@ -253,17 +277,17 @@ div.progress-bar {
     margin-top: 15px;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #5A3825;
+    color: var(--text-main);
 }
 
 #contactForm input,
 #contactForm textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #8A6348;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
-    background-color: #F4EBDD;
-    color: #291c15;
+    background-color: var(--bg-main);
+    color: var(--text-main);
     font-family: Arial, sans-serif;
     font-size: 16px;
 }
@@ -275,14 +299,14 @@ div.progress-bar {
 
 #contactForm input:focus,
 #contactForm textarea:focus {
-    outline: none;
-    border: 2px solid #C9A15A;
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 2px;
 }
 
 #contactForm button {
     margin-top: 20px;
-    background-color: #5A3825;
-    color: #F4EBDD;
+    background-color: var(--accent-cyan);
+    color: var(--bg-main);
     border: none;
     padding: 12px 22px;
     border-radius: 6px;
@@ -291,8 +315,14 @@ div.progress-bar {
 }
 
 #contactForm button:hover {
-    background-color: #C9A15A;
-    color: #291c15;
+    background-color: var(--accent-violet);
+    color: var(--bg-main);
+}
+
+#formMessage {
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--text-main);
 }
 
 #formMessage {
@@ -302,8 +332,8 @@ div.progress-bar {
 
 button {
     margin-top: 20px;
-    background-color: #5A3825;
-    color: #F4EBDD;
+    background-color: var(--accent-cyan);
+    color: var(--bg-main);
     border: none;
     padding: 12px 22px;
     border-radius: 6px;
@@ -313,6 +343,68 @@ button {
 }
 
 button:hover {
-    background-color: #C9A15A;
-    color: #291c15;
+    background-color: var(--accent-violet);
+    color: var(--bg-main);
+}
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    margin: 30px 0;
+}
+
+.home-page {
+    display: inline-block;
+    background-color: var(--accent-cyan);
+    color: var(--bg-main);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 22px;
+    border-radius: 8px;
+    border: 1px solid var(--accent-cyan);
+    transition: all 0.3s ease;
+}
+
+.home-page:hover {
+    background-color: var(--accent-violet);
+    border-color: var(--accent-violet);
+    color: var(--bg-main);
+    transform: translateY(-3px);
+}
+
+.back-to-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--accent-cyan);
+    color: var(--bg-main);
+    border: 1px solid var(--accent-cyan);
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    background-color: var(--accent-violet);
+    border-color: var(--accent-violet);
+    color: var(--bg-main);
+    transform: translateY(-4px);
+}
+
+#contact-link {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#contact-link:hover {
+    color: var(--accent-violet);
 }
